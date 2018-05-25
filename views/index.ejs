@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Cards</title>
+    <style media="screen">
+      *{
+        text-align: center;
+        font-size: 20px;
+        margin:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> New Cards</h1>
+    <!--in action make use of table name  -->
+    <form action="/cards" method="post">
+      <input type="number" name="mana" placeholder="Mana" required>
+    <input type="number" name="attack" placeholder="Attack">
+      <input type="number" name="health" placeholder="Health">
+    <input type="text" name="description" placeholder="name/description">
+      <p><button type="submit">Create Cards</button></p>
+    </form>
+    <h3>Your Current List:</h3>
+    <% for( var i=0;i<deck.length;i++){%>
+      <fieldset>
+      <p>Mana: <%= deck[i].mana %></p>
+      <p>Attack: <%= deck[i].attack %></p>
+      <p>Health: <%= deck[i].health%></p>
+      <p>Name/description: <%= deck[i].description %></p>
+        <a href="/cards/remove/<%=deck[i].id%>">Remove from List</a>
+    </fieldset>
+    <% } %>
+      <hr/>
+
+    <h1>All Cards:</h1>
+    <% for( var i=0;i<cards.length;i++){%>
+      <fieldset>
+      <p>Mana: <%= cards[i].mana %></p>
+      <p>Attack: <%= cards[i].attack %></p>
+      <p>Health: <%= cards[i].health%></p>
+      <p>Name/description: <%= cards[i].description %></p>
+      <a href="/cards/add/<%=cards[i].id%>">Add To List</a>
+    </fieldset>
+    <% } %>
+  </body>
+</html>
